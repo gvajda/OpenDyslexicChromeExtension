@@ -1,0 +1,17 @@
+/* Import OpenDyslexic font from CDN */
+@import url('https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/open-dyslexic-regular.css');
+
+/* Font application - paragraphs (always applied) */
+body.dyslexic-font-enabled p {
+  font-family: 'OpenDyslexic', -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+
+/* Font application - list items (optional) */
+body.dyslexic-font-enabled.apply-to-li li {
+  font-family: 'OpenDyslexic', -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+
+/* Font application - blockquotes (optional) */
+body.dyslexic-font-enabled.apply-to-blockquote blockquote {
+  font-family: 'OpenDyslexic', -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
