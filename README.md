@@ -47,10 +47,12 @@ Click the extension icon in the Chrome toolbar to open the popup and toggle the 
 Click the extension icon and select "Open Settings" to access configuration options:
 
 #### Default State
+
 - **Off by default** (recommended): Extension starts disabled on new sites
 - **On by default**: Extension starts enabled on all sites
 
 #### Additional Elements
+
 - ☐ Apply to list items (`<li>`)
 - ☐ Apply to blockquotes (`<blockquote>`)
 
@@ -73,7 +75,7 @@ Manage all site rules from the Settings page.
 ## Technical Details
 
 - **Manifest Version**: V3
-- **Font Source**: CDN (https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/)
+- **Font Source**: CDN (<https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/>)
 - **Storage**: `chrome.storage.sync` (syncs across devices)
 - **Permissions**: `storage`, `activeTab`, `tabs` (optional)
 
@@ -108,35 +110,6 @@ OpenDyslexicChromeExtension/
 
 **Note:** You don't need to remove and re-add the extension when updating - simply clicking the reload icon is sufficient.
 
-### Updating the Extension
-
-To update the extension after making changes:
-
-1. **Save your changes** to the extension files
-2. **Navigate to** `chrome://extensions/`
-3. **Find the extension** in the list
-4. **Click the reload icon** (circular arrow) on the extension card
-5. **Refresh any open tabs** where you want to test the changes
-
-**Important:** You do NOT need to:
-
-- Remove the extension and load it again
-- Restart Chrome
-- Clear any data
-
-Simply reload the extension and refresh your browser tabs.
-
-### Testing Checklist
-
-- [ ] Extension icon appears in Chrome toolbar
-- [ ] Font toggle works via popup
-- [ ] Font changes apply ONLY to configured elements
-- [ ] Settings persist across browser restarts
-- [ ] Site-specific rules work correctly
-- [ ] "Add current site" button in popup works
-- [ ] Options page saves and loads settings correctly
-- [ ] Extension syncs across devices (if signed into Chrome)
-
 ## Known Limitations
 
 - Cannot inject into Chrome internal pages (`chrome://`, `chrome-extension://`)
@@ -147,6 +120,7 @@ Simply reload the extension and refresh your browser tabs.
 ## Support
 
 For issues, questions, or contributions:
+
 - Open an issue on GitHub
 - Check the [Developer Guide](CLAUDE.md) for technical details
 
