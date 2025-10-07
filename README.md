@@ -11,6 +11,8 @@ A Chrome extension that applies the OpenDyslexic font to paragraph text elements
 - 💾 Syncs settings across Chrome browsers (when signed in)
 - 🎨 Preserves original fonts for headings, navigation, and UI elements
 
+<p align="center"><img src="screenshots/lorem-ipsum.png" alt="lorem-ipsum"/></p>
+
 ## Installation
 
 ### For Development/Testing
@@ -31,6 +33,8 @@ A Chrome extension that applies the OpenDyslexic font to paragraph text elements
 4. **Verify Installation**
    - You should see the extension in your extensions list
    - Visit any webpage and click the extension icon to toggle the font
+
+**Note:** This extension only requires `activeTab` permission, meaning it only accesses pages when you click the extension icon. No broad host permissions are needed.
 
 ### For Production
 
@@ -77,15 +81,17 @@ Manage all site rules from the Settings page.
 - **Manifest Version**: V3
 - **Font Source**: CDN (<https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/>)
 - **Storage**: `chrome.storage.sync` (syncs across devices)
-- **Permissions**: `storage`, `activeTab`, `tabs` (optional)
+- **Permissions**: `storage`, `activeTab`, `scripting`
+- **Injection Method**: Dynamic script injection (no broad host permissions required)
 
 ## File Structure
 
 ```
 OpenDyslexicChromeExtension/
 ├── manifest.json          # Extension configuration (Manifest V3)
-├── content.js             # Content script (injected into pages)
-├── content.css            # Font styles
+├── background.js          # Service worker for script injection
+├── content.js             # Content script (dynamically injected)
+├── content.css            # Font styles (dynamically injected)
 ├── popup.html             # Extension popup interface
 ├── popup.js               # Popup logic
 ├── options.html           # Settings page

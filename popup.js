@@ -131,6 +131,33 @@
     }
 
     /**
+     * Inject content scripts into current tab if not already injected
+     */
+    async function ensureScriptsInjected() {
+        if (!currentTab?.id) return;
+
+        try {
+            // Try to ping the content script
+            await chrome.tabs.sendMessage(currentTab.id, { action: "ping" });
+        } catch (error) {
+            // Content script not loaded, inject it
+            try {
+                await chrome.scripting.insertCSS({
+                    target: { tabId: currentTab.id },
+                    files: ["content.css"],
+                });
+
+                await chrome.scripting.executeScript({
+                    target: { tabId: currentTab.id },
+                    files: ["content.js"],
+                });
+            } catch (injectError) {
+                console.error("Error injecting scripts:", injectError);
+            }
+        }
+    }
+
+    /**
      * Toggle font on current site
      */
     async function toggleFont() {
@@ -148,20 +175,14 @@
         settings.currentSites[currentSite] = newState;
 
         try {
+            // Ensure scripts are injected first
+            await ensureScriptsInjected();
+
             await storage.sync.set({ currentSites: settings.currentSites });
             updateUI();
 
-            // Send message to content script to toggle
-            if (currentTab?.id) {
-                chrome.tabs
-                    .sendMessage(currentTab.id, {
-                        action: "toggleFont",
-                        enabled: newState,
-                    })
-                    .catch(() => {
-                        // Content script might not be loaded, that's ok
-                    });
-            }
+            // Notify content script - this will trigger via storage listener
+            // No need to send message directly as content.js listens to storage changes
         } catch (error) {
             console.error("Error toggling font:", error);
         }
@@ -252,4 +273,7 @@
     // Initialize
     await getCurrentTab();
     await loadSettings();
+
+    // Inject scripts on first popup open to ensure current state is applied
+    await ensureScriptsInjected();
 })();
