@@ -2,6 +2,8 @@
 
 A Chrome extension that applies the OpenDyslexic font to paragraph text elements on websites while preserving original styling for headings and UI elements.
 
+**[Install from Chrome Web Store](https://chromewebstore.google.com/detail/opendyslexic-font-toggle/agceondhhepedllcileeclncgnabimmg)**
+
 ## Features
 
 - ✨ One-click toggle via extension icon
@@ -36,10 +38,6 @@ A Chrome extension that applies the OpenDyslexic font to paragraph text elements
 
 **Note:** This extension only requires `activeTab` permission, meaning it only accesses pages when you click the extension icon. No broad host permissions are needed.
 
-### For Production
-
-*(Coming soon to Chrome Web Store)*
-
 ## Usage
 
 ### Basic Toggle
@@ -57,8 +55,8 @@ Click the extension icon and select "Open Settings" to access configuration opti
 
 #### Additional Elements
 
-- ☐ Apply to list items (`<li>`)
-- ☐ Apply to blockquotes (`<blockquote>`)
+- [ ] Apply to list items (`<li>`)
+- [ ] Apply to blockquotes (`<blockquote>`)
 
 *Note: Paragraphs (`<p>`) always receive the OpenDyslexic font when enabled*
 
